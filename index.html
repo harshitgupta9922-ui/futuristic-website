@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HARSHIT.DEV — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════ BOOT SCREEN ═══════════════════ -->
+  <div id="boot-screen">
+    <canvas id="matrix-canvas"></canvas>
+    <div class="boot-content">
+      <div class="boot-logo">
+        <span class="glitch" data-text="HARSHIT.DEV">HARSHIT.DEV</span>
+      </div>
+      <div class="boot-terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">boot.sh — zsh</span>
+        </div>
+        <div class="terminal-body" id="boot-log"></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="boot-progress"></div></div>
+        <span id="boot-percent">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ VS CODE SHELL ═══════════════════ -->
+  <div id="vscode" class="hidden">
+
+    <!-- TITLE BAR -->
+    <div class="title-bar">
+      <div class="title-traffic">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      </div>
+      <div class="title-menus">
+        <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Run</span><span>Terminal</span><span>Help</span>
+      </div>
+      <div class="title-name">HARSHIT.DEV — Visual Studio Code</div>
+      <div class="title-right">
+        <div class="notification-bell">🔔</div>
+      </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="vscode-body">
+
+      <!-- ACTIVITY BAR -->
+      <div class="activity-bar">
+        <div class="activity-icon active" data-panel="explorer" title="Explorer">
+          <svg viewBox="0 0 24 24"><path d="M3 3h6v6H3zm0 8h6v6H3zm8-8h10v2H11zm0 4h10v2H11zm0 4h10v2H11zm0 4h10v2H11z"/></svg>
+        </div>
+        <div class="activity-icon" data-panel="search" title="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="activity-icon" data-panel="git" title="Source Control">
+          <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v2a3 3 0 003 3h6a3 3 0 003-3V9"/></svg>
+        </div>
+        <div class="activity-icon" data-panel="extensions" title="Extensions">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg>
+        </div>
+        <div class="activity-spacer"></div>
+        <div class="activity-icon" data-panel="settings" title="Settings">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">EXPLORER</div>
+        <div class="sidebar-section">
+          <div class="tree-root open">
+            <span class="tree-arrow">▾</span>
+            <span class="folder-icon">📁</span>
+            <span>HARSHIT.DEV</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-item file active" data-tab="about">
+              <span class="file-icon js-icon">JS</span>
+              <span>about.js</span>
+            </div>
+            <div class="tree-item file" data-tab="projects">
+              <span class="file-icon json-icon">{ }</span>
+              <span>projects.json</span>
+            </div>
+            <div class="tree-item file" data-tab="skills">
+              <span class="file-icon css-icon">CSS</span>
+              <span>skills.css</span>
+            </div>
+            <div class="tree-item file" data-tab="experience">
+              <span class="file-icon ts-icon">TS</span>
+              <span>experience.ts</span>
+            </div>
+            <div class="tree-item file" data-tab="contact">
+              <span class="file-icon html-icon">HTML</span>
+              <span>contact.html</span>
+            </div>
+            <div class="tree-folder">
+              <span class="tree-arrow">▸</span>
+              <span class="folder-icon">📂</span>
+              <span>assets/</span>
+            </div>
+            <div class="tree-item file dimmed">
+              <span class="file-icon md-icon">MD</span>
+              <span>README.md</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-header mt">OUTLINE</div>
+        <div class="outline-tree" id="outline-tree">
+          <div class="outline-item" data-section="hero">◆ Hero</div>
+          <div class="outline-item" data-section="about">◆ About</div>
+          <div class="outline-item" data-section="projects">◆ Projects</div>
+          <div class="outline-item" data-section="skills">◆ Skills</div>
+          <div class="outline-item" data-section="contact">◆ Contact</div>
+        </div>
+      </div>
+
+      <!-- EDITOR + TERMINAL COLUMN -->
+      <div class="editor-column">
+
+        <!-- TAB BAR -->
+        <div class="tab-bar">
+          <div class="tab active" data-tab="about">
+            <span class="tab-icon js-icon">JS</span>
+            about.js
+            <span class="tab-close">✕</span>
+          </div>
+          <div class="tab" data-tab="projects">
+            <span class="tab-icon json-icon">{ }</span>
+            projects.json
+            <span class="tab-close">✕</span>
+          </div>
+          <div class="tab" data-tab="skills">
+            <span class="tab-icon css-icon">CSS</span>
+            skills.css
+            <span class="tab-close">✕</span>
+          </div>
+          <div class="tab" data-tab="experience">
+            <span class="tab-icon ts-icon">TS</span>
+            experience.ts
+            <span class="tab-close">✕</span>
+          </div>
+          <div class="tab" data-tab="contact">
+            <span class="tab-icon html-icon">HTML</span>
+            contact.html
+            <span class="tab-close">✕</span>
+          </div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+          <span>HARSHIT.DEV</span>
+          <span class="bc-sep">›</span>
+          <span id="breadcrumb-file">about.js</span>
+          <span class="bc-sep">›</span>
+          <span id="breadcrumb-section">Hero</span>
+        </div>
+
+        <!-- EDITOR AREA -->
+        <div class="editor-area">
+          <div class="line-numbers" id="line-numbers"></div>
+
+          <!-- MAIN CONTENT (each section = tab panel) -->
+          <div class="editor-content" id="editor-scroll">
+
+            <!-- ─── ABOUT.JS ─── -->
+            <div class="tab-panel active" id="tab-about">
+
+              <!-- HERO SECTION -->
+              <section class="section hero-section" id="section-hero">
+                <div class="code-comment">// ═══════════════════════════════════════════════════</div>
+                <div class="code-comment">// HARSHIT GUPTA — Digital Marketer × Tech Builder</div>
+                <div class="code-comment">// ═══════════════════════════════════════════════════</div>
+                <br/>
+                <div class="code-line"><span class="kw">const</span> <span class="var">developer</span> <span class="op">=</span> <span class="brace">{</span></div>
+
+                <div class="hero-card">
+                  <div class="hero-avatar-wrap">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-ring ring2"></div>
+                    <div class="avatar-placeholder">
+                      <img src="pic.jpeg" alt="Harshit Gupta" class="avatar-photo" />
+                      <div class="avatar-scan"></div>
+                    </div>
+                    <div class="hero-status"><span class="status-dot"></span> Ready to work</div>
+                  </div>
+                  <div class="hero-info">
+                    <h1 class="hero-name glitch-subtle" data-text="HARSHIT GUPTA">HARSHIT GUPTA</h1>
+                    <div class="hero-title-line">
+                      <span class="str">"</span>
+                      <span class="typewriter" id="typewriter"></span>
+                      <span class="cursor-blink">|</span>
+                      <span class="str">"</span>
+                    </div>
+                    <div class="hero-meta">
+                      <span class="meta-badge"><span class="badge-dot cyan"></span> Performance Marketing</span>
+                      <span class="meta-badge"><span class="badge-dot purple"></span> SaaS & Web Apps</span>
+                      <span class="meta-badge"><span class="badge-dot green"></span> 10+ Years Exp.</span>
+                    </div>
+                    <p class="hero-bio">
+                      One stop solution for all your marketing, automation, and tech problems.
+                    </p>
+                    <div class="hero-actions">
+                      <button class="btn-primary" onclick="switchTab('projects')">
+                        <span class="btn-glow"></span>
+                        <span>⚡ View Projects</span>
+                      </button>
+                      <button class="btn-secondary" onclick="switchTab('contact')">
+                        <span>📡 Contact Me</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code-line indent"><span class="prop">name</span><span class="op">:</span> <span class="str">"Harshit Gupta"</span><span class="punct">,</span></div>
+                <div class="code-line indent"><span class="prop">role</span><span class="op">:</span> <span class="str">"Digital Marketer & Tech Builder"</span><span class="punct">,</span></div>
+                <div class="code-line indent"><span class="prop">location</span><span class="op">:</span> <span class="str">"Agra, U.P., India 🇮🇳"</span><span class="punct">,</span></div>
+                <div class="code-line indent"><span class="prop">status</span><span class="op">:</span> <span class="str">"ready_to_work"</span><span class="punct">,</span></div>
+                <div class="code-line"><span class="brace">}</span><span class="punct">;</span></div>
+              </section>
+
+              <!-- ABOUT SECTION -->
+              <section class="section" id="section-about">
+                <br/>
+                <div class="code-comment">// ─── About ─────────────────────────────────────────</div>
+                <br/>
+                <div class="code-line"><span class="kw">function</span> <span class="fn">getAbout</span><span class="punct">()</span> <span class="brace">{</span></div>
+                <div class="about-card">
+                  <div class="about-text">
+                    <div class="section-label">WHO AM I</div>
+                    <p>
+                      Harshit Gupta is a solid digital marketer with 10+ years of experience,
+                      mainly killing it in performance marketing. He's been running high-ROI
+                      campaigns across platforms like a pro — proper data-driven game, strong.
+                    </p>
+                    <p>
+                      Now he's leveling up into tech — building APIs, web apps, SaaS, and custom
+                      solutions like a boss. The rare breed that understands both the marketing
+                      funnel and the code that powers it.
+                    </p>
+                    <div class="stats-row">
+                      <div class="stat-chip"><span class="stat-num">10+</span><span class="stat-label">Years Exp.</span></div>
+                      <div class="stat-chip"><span class="stat-num">High</span><span class="stat-label">ROI Game 📈</span></div>
+                      <div class="stat-chip"><span class="stat-num">∞</span><span class="stat-label">Chai ☕</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-line indent"><span class="kw">return</span> <span class="str">"Marketing brains. Tech hands. One man army."</span><span class="punct">;</span></div>
+                <div class="code-line"><span class="brace">}</span></div>
+              </section>
+
+            </div>
+
+            <!-- ─── PROJECTS.JSON ─── -->
+            <div class="tab-panel" id="tab-projects">
+              <section class="section" id="section-projects">
+                <div class="code-comment">// ═══════════════════════════════════════════════════</div>
+                <div class="code-comment">// projects.json — Selected Works</div>
+                <div class="code-comment">// ═══════════════════════════════════════════════════</div>
+                <br/>
+                <div class="code-line"><span class="brace">[</span></div>
+
+                <div class="projects-grid">
+
+                  <!-- PROJECT 01: PaperTrade Pro -->
+                  <div class="project-card" data-index="01">
+                    <div class="project-img-slot">
+                      <img src="papertrading.png" alt="PaperTrade Pro" class="project-screenshot" />
+                      <div class="project-img-overlay">
+                        <span class="overlay-badge">📈 Web App</span>
+                      </div>
+                    </div>
+                    <div class="project-info">
+                      <div class="project-num">01</div>
+                      <h3 class="project-title">PaperTrade Pro</h3>
+                      <p class="project-desc">A full-featured stock market paper trading simulator — practice buying &amp; selling NSE/BSE stocks with real-time candlestick charts, live order book, and CNC/Intraday product types. Zero risk, 100% real market feel. Built for traders who want to master the game before going live.</p>
+                      <div class="project-highlights">
+                        <span class="highlight-item">📊 Real-time charts</span>
+                        <span class="highlight-item">🏦 Order simulation</span>
+                        <span class="highlight-item">📋 Portfolio tracking</span>
+                      </div>
+                      <div class="project-tags">
+                        <span class="tag react">Web App</span>
+                        <span class="tag node">Real-time Data</span>
+                        <span class="tag ai">Stock Market</span>
+                      </div>
+                      <div class="project-links">
+                        <a class="proj-btn" href="#">⚡ Live Demo</a>
+                        <a class="proj-btn ghost" href="#">⎔ Details</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PROJECT 02: EkayaGreen -->
+                  <div class="project-card" data-index="02">
+                    <div class="project-img-slot">
+                      <img src="wordpresswebsite.png" alt="EkayaGreen Website" class="project-screenshot" />
+                      <div class="project-img-overlay">
+                        <span class="overlay-badge">🌿 WordPress</span>
+                      </div>
+                    </div>
+                    <div class="project-info">
+                      <div class="project-num">02</div>
+                      <h3 class="project-title">EkayaGreen — Sustainability Platform</h3>
+                      <p class="project-desc">A conversion-focused business website for EkayaGreen — a company connecting global businesses with eco-innovators to replace plastics with FDA &amp; BPI certified planet-friendly materials. Clean design, strong CTA flow, and a global supplier network showcase built to generate B2B leads.</p>
+                      <div class="project-highlights">
+                        <span class="highlight-item">🌍 B2B Lead Gen</span>
+                        <span class="highlight-item">♻️ Eco-Brand Design</span>
+                        <span class="highlight-item">📦 Supplier Network</span>
+                      </div>
+                      <div class="project-tags">
+                        <span class="tag next">WordPress</span>
+                        <span class="tag mongo">Web Design</span>
+                        <span class="tag stripe">B2B</span>
+                      </div>
+                      <div class="project-links">
+                        <a class="proj-btn" href="#">⚡ Live Site</a>
+                        <a class="proj-btn ghost" href="#">⎔ Details</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PROJECT 03: School Fee Management -->
+                  <div class="project-card" data-index="03">
+                    <div class="project-img-slot">
+                      <img src="schoollms.png" alt="School Fee Management System" class="project-screenshot" />
+                      <div class="project-img-overlay">
+                        <span class="overlay-badge">🏫 SaaS</span>
+                      </div>
+                    </div>
+                    <div class="project-info">
+                      <div class="project-num">03</div>
+                      <h3 class="project-title">School Fee Management System</h3>
+                      <p class="project-desc">A custom SaaS dashboard built for schools to manage student records, track fee collections, and monitor pending dues — all synced live with Google Sheets. Features student search, fee status tracking (Collected / Pending / Fully Paid), class-wise records, and one-click sync. No more spreadsheet chaos.</p>
+                      <div class="project-highlights">
+                        <span class="highlight-item">📊 Live Google Sheets sync</span>
+                        <span class="highlight-item">💰 Fee tracking</span>
+                        <span class="highlight-item">🔍 Student search</span>
+                      </div>
+                      <div class="project-tags">
+                        <span class="tag python">SaaS Dashboard</span>
+                        <span class="tag react">Google Sheets API</span>
+                        <span class="tag aws">Custom Web App</span>
+                      </div>
+                      <div class="project-links">
+                        <a class="proj-btn" href="#">⚡ Live Demo</a>
+                        <a class="proj-btn ghost" href="#">⎔ Details</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PROJECT 04: World of Softwares -->
+                  <div class="project-card" data-index="04">
+                    <div class="project-img-slot">
+                      <img src="genricsoftwares.png" alt="World of Softwares" class="project-screenshot" />
+                      <div class="project-img-overlay">
+                        <span class="overlay-badge">🧰 500+ Tools</span>
+                      </div>
+                    </div>
+                    <div class="project-info">
+                      <div class="project-num">04</div>
+                      <h3 class="project-title">World of Softwares — Online Toolbox</h3>
+                      <p class="project-desc">A massive free-to-use platform with 500+ online tools across 18 categories — image converters, PDF utilities, calculators, developer tools, SEO tools, and more. Zero signup, 100% free, fully browser-based. Built to serve millions of daily users who need quick, reliable tools without any friction.</p>
+                      <div class="project-highlights">
+                        <span class="highlight-item">🛠 500+ Free Tools</span>
+                        <span class="highlight-item">📂 18 Categories</span>
+                        <span class="highlight-item">🚫 No Signup Needed</span>
+                      </div>
+                      <div class="project-tags">
+                        <span class="tag socket">SaaS Platform</span>
+                        <span class="tag vue">Web Tools</span>
+                        <span class="tag go">100% Free</span>
+                      </div>
+                      <div class="project-links">
+                        <a class="proj-btn" href="#">⚡ Visit Site</a>
+                        <a class="proj-btn ghost" href="#">⎔ Details</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PROJECT 05: Digital Marketing Content -->
+                  <div class="project-card" data-index="05">
+                    <div class="project-img-slot">
+                      <img src="digitalmarketing.jpg" alt="Digital Marketing Content" class="project-screenshot" />
+                      <div class="project-img-overlay">
+                        <span class="overlay-badge">🎬 Content Creator</span>
+                      </div>
+                    </div>
+                    <div class="project-info">
+                      <div class="project-num">05</div>
+                      <h3 class="project-title">Digital Marketing Education</h3>
+                      <p class="project-desc">Beyond client work — Harshit creates in-depth digital marketing content educating marketers on Google Ads troubleshooting, campaign optimization, and platform updates. Real talk, zero fluff. Content like "Google Ads Not Spending? 3 Fixes to Boost Your Campaign" — actionable advice from 10+ years in the trenches.</p>
+                      <div class="project-highlights">
+                        <span class="highlight-item">🎯 Google Ads Tips</span>
+                        <span class="highlight-item">📹 Video Content</span>
+                        <span class="highlight-item">💡 Actionable Advice</span>
+                      </div>
+                      <div class="project-tags">
+                        <span class="tag docker">Google Ads</span>
+                        <span class="tag k8s">Performance Mktg</span>
+                        <span class="tag node">Content</span>
+                      </div>
+                      <div class="project-links">
+                        <a class="proj-btn" href="#">⚡ Watch Content</a>
+                        <a class="proj-btn ghost" href="#">⎔ Details</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PROJECT 06: Google Ads Mastery -->
+                  <div class="project-card" data-index="06">
+                    <div class="project-img-slot">
+                      <img src="googleads.webp" alt="Google Ads Mastery" class="project-screenshot" />
+                      <div class="project-img-overlay">
+                        <span class="overlay-badge">📊 Ads Expert</span>
+                      </div>
+                    </div>
+                    <div class="project-info">
+                      <div class="project-num">06</div>
+                      <h3 class="project-title">Google Ads Mastery &amp; Campaign Work</h3>
+                      <p class="project-desc">10+ years of hands-on Google Ads campaign management — from search &amp; display to Performance Max. Harshit breaks down platform changes, dashboard updates, and optimization strategies that most agencies don't even know exist. Covering topics like "Shocking Changes in Google Ads Dashboard" — keeping marketers ahead of the curve.</p>
+                      <div class="project-highlights">
+                        <span class="highlight-item">🔥 10+ Yrs Experience</span>
+                        <span class="highlight-item">📈 High-ROI Campaigns</span>
+                        <span class="highlight-item">🧠 Platform Expertise</span>
+                      </div>
+                      <div class="project-tags">
+                        <span class="tag next">Google Ads</span>
+                        <span class="tag graph">PPC</span>
+                        <span class="tag ts">Campaign Mgmt</span>
+                      </div>
+                      <div class="project-links">
+                        <a class="proj-btn" href="#">⚡ See Work</a>
+                        <a class="proj-btn ghost" href="#">⎔ Details</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <br/>
+                <div class="code-line"><span class="brace">]</span></div>
+              </section>
+            </div>
+
+            <!-- ─── SKILLS.CSS ─── -->
+            <div class="tab-panel" id="tab-skills">
+              <section class="section" id="section-skills">
+                <div class="code-comment">/* ═══════════════════════════════════════════════════ */</div>
+                <div class="code-comment">/* skills.css — Arsenal: Marketing × Tech × E-Commerce  */</div>
+                <div class="code-comment">/* ═══════════════════════════════════════════════════ */</div>
+                <br/>
+
+                <div class="skills-universe">
+
+                  <!-- TECH & DEVELOPMENT -->
+                  <div class="skill-category">
+                    <div class="skill-cat-label">
+                      <span class="css-selector">.tech_and_development</span>
+                      <span class="css-brace"> {</span>
+                    </div>
+                    <div class="skill-cat-icon">⚙️</div>
+                    <div class="skill-bars">
+                      <div class="skill-item">
+                        <span class="skill-name">Software Dev <span class="skill-sub">APIs · Web Apps · SaaS</span></span>
+                        <div class="skill-bar"><div class="skill-fill cyan-fill" style="--w:85%"></div></div>
+                        <span class="skill-pct">85%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">API Development &amp; Integrations</span>
+                        <div class="skill-bar"><div class="skill-fill cyan-fill" style="--w:88%"></div></div>
+                        <span class="skill-pct">88%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Web App Development</span>
+                        <div class="skill-bar"><div class="skill-fill cyan-fill" style="--w:82%"></div></div>
+                        <span class="skill-pct">82%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Automation <span class="skill-sub">Zapier · Webhooks · Workflows</span></span>
+                        <div class="skill-bar"><div class="skill-fill cyan-fill" style="--w:90%"></div></div>
+                        <span class="skill-pct">90%</span>
+                      </div>
+                    </div>
+                    <div class="css-brace">}</div>
+                  </div>
+
+                  <!-- PERFORMANCE MARKETING -->
+                  <div class="skill-category">
+                    <div class="skill-cat-label">
+                      <span class="css-selector">.performance_marketing</span>
+                      <span class="css-brace"> {</span>
+                    </div>
+                    <div class="skill-cat-icon">📈</div>
+                    <div class="skill-bars">
+                      <div class="skill-item">
+                        <span class="skill-name">Google Ads &amp; Paid Media</span>
+                        <div class="skill-bar"><div class="skill-fill purple-fill" style="--w:97%"></div></div>
+                        <span class="skill-pct">97%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Meta Ads <span class="skill-sub">Facebook · Instagram</span></span>
+                        <div class="skill-bar"><div class="skill-fill purple-fill" style="--w:95%"></div></div>
+                        <span class="skill-pct">95%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Analytics <span class="skill-sub">GA4 · Tracking · Funnels</span></span>
+                        <div class="skill-bar"><div class="skill-fill purple-fill" style="--w:92%"></div></div>
+                        <span class="skill-pct">92%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Funnel Building &amp; Strategy</span>
+                        <div class="skill-bar"><div class="skill-fill purple-fill" style="--w:94%"></div></div>
+                        <span class="skill-pct">94%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">SEO &amp; Organic Growth</span>
+                        <div class="skill-bar"><div class="skill-fill purple-fill" style="--w:88%"></div></div>
+                        <span class="skill-pct">88%</span>
+                      </div>
+                    </div>
+                    <div class="css-brace">}</div>
+                  </div>
+
+                  <!-- E-COMMERCE & WEB -->
+                  <div class="skill-category">
+                    <div class="skill-cat-label">
+                      <span class="css-selector">.ecommerce_and_web</span>
+                      <span class="css-brace"> {</span>
+                    </div>
+                    <div class="skill-cat-icon">🛒</div>
+                    <div class="skill-bars">
+                      <div class="skill-item">
+                        <span class="skill-name">Amazon Seller Account Setup</span>
+                        <div class="skill-bar"><div class="skill-fill green-fill" style="--w:90%"></div></div>
+                        <span class="skill-pct">90%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Landing Pages <span class="skill-sub">WordPress · Custom</span></span>
+                        <div class="skill-bar"><div class="skill-fill green-fill" style="--w:93%"></div></div>
+                        <span class="skill-pct">93%</span>
+                      </div>
+                      <div class="skill-item">
+                        <span class="skill-name">Shopify Website</span>
+                        <div class="skill-bar"><div class="skill-fill green-fill" style="--w:88%"></div></div>
+                        <span class="skill-pct">88%</span>
+                      </div>
+                    </div>
+                    <div class="css-brace">}</div>
+                  </div>
+
+                </div>
+
+                <br/>
+                <div class="tech-icons-row">
+                  <div class="tech-badge">📊 Google Ads</div>
+                  <div class="tech-badge">📘 Meta Ads</div>
+                  <div class="tech-badge">📈 GA4</div>
+                  <div class="tech-badge">⚡ Zapier</div>
+                  <div class="tech-badge">🔗 Webhooks</div>
+                  <div class="tech-badge">🛒 Shopify</div>
+                  <div class="tech-badge">🌐 WordPress</div>
+                  <div class="tech-badge">📦 Amazon</div>
+                  <div class="tech-badge">🔧 APIs</div>
+                  <div class="tech-badge">🚀 SaaS</div>
+                  <div class="tech-badge">🎯 Funnels</div>
+                  <div class="tech-badge">🌱 SEO</div>
+                </div>
+
+              </section>
+            </div>
+
+            <!-- ─── EXPERIENCE.TS ─── -->
+            <div class="tab-panel" id="tab-experience">
+              <section class="section">
+                <div class="code-comment">// ═══════════════════════════════════════════════════</div>
+                <div class="code-comment">// experience.ts — Work History</div>
+                <div class="code-comment">// ═══════════════════════════════════════════════════</div>
+                <br/>
+                <div class="code-line"><span class="kw">const</span> <span class="var">experience</span><span class="op">:</span> <span class="type">Role[]</span> <span class="op">=</span> <span class="brace">[</span></div>
+                <br/>
+
+                <div class="timeline">
+
+                  <!-- CURRENT — Freelancer -->
+                  <div class="timeline-item current-role">
+                    <div class="tl-dot active-dot"></div>
+                    <div class="tl-line"></div>
+                    <div class="tl-card tl-card-featured">
+                      <div class="tl-current-badge">● CURRENT</div>
+                      <div class="tl-header">
+                        <span class="tl-company">🚀 Self-Employed — Freelancer &amp; Consultant</span>
+                        <span class="tl-period">Jul 2025 – Present</span>
+                      </div>
+                      <div class="tl-role">Digital Marketing Trainer / Consultant</div>
+                      <div class="tl-desc">Running independent consulting for businesses that need serious results — Google Ads, Meta Ads, funnel strategy, web apps, SaaS builds, and automation. Working directly with clients across India and globally. No agency overhead, just sharp execution and data-driven outcomes.</div>
+                      <div class="tl-highlights">
+                        <span class="tl-hl-item">🎯 Performance Marketing</span>
+                        <span class="tl-hl-item">⚙️ Tech &amp; Automation</span>
+                        <span class="tl-hl-item">🌍 Global Clients</span>
+                      </div>
+                      <div class="tl-tags">
+                        <span class="tag node">Google Ads</span>
+                        <span class="tag react">Meta Ads</span>
+                        <span class="tag aws">SaaS</span>
+                        <span class="tag docker">Automation</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Head of Digital Marketing -->
+                  <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-line"></div>
+                    <div class="tl-card">
+                      <div class="tl-header">
+                        <span class="tl-company">Jobaaj.com</span>
+                        <span class="tl-period">Mar 2023 – Jun 2025 · 2 yrs 4 mos</span>
+                      </div>
+                      <div class="tl-role">Head of Digital Marketing</div>
+                      <div class="tl-desc">Led the full digital marketing function — strategy, execution, team, and analytics. Drove online visibility and growth across channels, leveraged data-driven insights to optimize campaign performance, and built high-performing marketing teams from the ground up.</div>
+                      <div class="tl-tags">
+                        <span class="tag vue">Performance Mktg</span>
+                        <span class="tag node">Analytics</span>
+                        <span class="tag mongo">Team Leadership</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Sr. Performance Marketing Strategist -->
+                  <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-line"></div>
+                    <div class="tl-card">
+                      <div class="tl-header">
+                        <span class="tl-company">Milestone Inc</span>
+                        <span class="tl-period">Apr 2022 – Mar 2023 · 1 yr</span>
+                      </div>
+                      <div class="tl-role">Sr. Performance Marketing Strategist</div>
+                      <div class="tl-desc">Paid media specialist for Omni Channel clients in Fintech and Hospitality. Managed $100K+/month ad budgets. Tracked KPIs like RoAS, Conversion & RPB. Set up advanced tracking via Google Analytics and Google Tag Manager with custom event configurations.</div>
+                      <div class="tl-tags">
+                        <span class="tag react">Paid Media</span>
+                        <span class="tag python">Google Ads</span>
+                        <span class="tag ts">$100K+ Budget</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Professional Freelancer -->
+                  <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                      <div class="tl-header">
+                        <span class="tl-company">Fiverr &amp; Upwork</span>
+                        <span class="tl-period">Jul 2014 – Apr 2017 · 2 yrs 10 mos</span>
+                      </div>
+                      <div class="tl-role">Professional Freelancer</div>
+                      <div class="tl-desc">Built the foundation — freelancing across digital strategy, SEO, paid advertising, social media management, content marketing, and email campaigns. Served global clients remotely, built reputation on top platforms, and developed the full-stack marketing skillset that drives everything today.</div>
+                      <div class="tl-tags">
+                        <span class="tag socket">Digital Strategy</span>
+                        <span class="tag go">SEO</span>
+                        <span class="tag k8s">PPC</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <br/>
+                <div class="code-line"><span class="brace">]</span></div>
+              </section>
+            </div>
+
+            <!-- ─── CONTACT.HTML ─── -->
+            <div class="tab-panel" id="tab-contact">
+              <section class="section" id="section-contact">
+                <div class="code-comment">&lt;!-- ════════════════════════════════════════════════ --&gt;</div>
+                <div class="code-comment">&lt;!-- contact.html — Get In Touch                       --&gt;</div>
+                <div class="code-comment">&lt;!-- ════════════════════════════════════════════════ --&gt;</div>
+                <br/>
+
+                <div class="contact-grid">
+                  <div class="contact-info">
+                    <div class="contact-heading">
+                      <span class="html-tag">&lt;h2&gt;</span>
+                      <span>Let's Build Something</span>
+                      <span class="html-tag-close">&lt;/h2&gt;</span>
+                    </div>
+                    <p class="contact-sub">Available for consulting, freelance projects, and collaborations. Drop a message — I reply fast.</p>
+
+                    <div class="contact-links">
+                      <a class="contact-link" href="mailto:harshitgupta9922@gmail.com">
+                        <span class="contact-icon">📧</span>
+                        <div class="contact-label-wrap">
+                          <span class="contact-label">harshitgupta9922@gmail.com</span>
+                          <span class="contact-hint">Send an email</span>
+                        </div>
+                        <span class="contact-arrow">→</span>
+                      </a>
+                      <a class="contact-link" href="https://wa.me/919916749631" target="_blank" rel="noopener">
+                        <span class="contact-icon">💬</span>
+                        <div class="contact-label-wrap">
+                          <span class="contact-label">+91-99167-49631</span>
+                          <span class="contact-hint">WhatsApp / Call</span>
+                        </div>
+                        <span class="contact-arrow">→</span>
+                      </a>
+                      <a class="contact-link" href="https://www.linkedin.com/in/harshitgupta1995/" target="_blank" rel="noopener">
+                        <span class="contact-icon">💼</span>
+                        <div class="contact-label-wrap">
+                          <span class="contact-label">linkedin.com/in/harshitgupta1995</span>
+                          <span class="contact-hint">Connect on LinkedIn</span>
+                        </div>
+                        <span class="contact-arrow">→</span>
+                      </a>
+                      <a class="contact-link" href="https://maps.google.com/?q=Agra,UP,India" target="_blank" rel="noopener">
+                        <span class="contact-icon">📍</span>
+                        <div class="contact-label-wrap">
+                          <span class="contact-label">Agra, U.P., India 🇮🇳</span>
+                          <span class="contact-hint">Available globally · Remote</span>
+                        </div>
+                        <span class="contact-arrow">→</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <form class="contact-form" action="https://formsubmit.co/harshitgupta9922@gmail.com" method="POST" id="contact-form">
+                    <!-- FormSubmit config -->
+                    <input type="hidden" name="_subject" value="🚀 New message from your portfolio!" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_template" value="box" />
+                    <input type="hidden" name="_next" value="about:blank" />
+
+                    <div class="html-tag">&lt;form action="formsubmit.co"&gt;</div>
+                    <div class="form-group">
+                      <label class="form-label"><span class="html-attr">name</span><span class="html-eq">=</span><span class="html-val">"name"</span></label>
+                      <input class="form-input" type="text" name="name" placeholder="Your Name" required />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label"><span class="html-attr">name</span><span class="html-eq">=</span><span class="html-val">"email"</span></label>
+                      <input class="form-input" type="email" name="email" placeholder="your@email.com" required />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label"><span class="html-attr">name</span><span class="html-eq">=</span><span class="html-val">"message"</span></label>
+                      <textarea class="form-input form-textarea" name="message" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary full-width" id="form-submit-btn">
+                      <span class="btn-glow"></span>
+                      <span id="form-btn-text">⚡ Send Message</span>
+                    </button>
+                    <div class="html-tag">&lt;/form&gt;</div>
+                    <div class="form-toast hidden" id="form-toast">✓ Message sent! Harshit will reply within 24h.</div>
+                    <div class="form-note">📬 Messages go directly to harshitgupta9922@gmail.com</div>
+                  </form>
+                </div>
+
+              </section>
+            </div>
+
+          </div><!-- /editor-content -->
+
+          <!-- MINIMAP -->
+          <div class="minimap" id="minimap">
+            <canvas id="minimap-canvas"></canvas>
+          </div>
+        </div><!-- /editor-area -->
+
+        <!-- TERMINAL PANEL -->
+        <div class="terminal-panel" id="terminal-panel">
+          <div class="terminal-tabs">
+            <span class="term-tab active">TERMINAL</span>
+            <span class="term-tab">PROBLEMS</span>
+            <span class="term-tab">OUTPUT</span>
+            <span class="term-tab">DEBUG CONSOLE</span>
+            <span class="term-panel-close" id="toggle-terminal">⌃</span>
+          </div>
+          <div class="terminal-body" id="main-terminal">
+            <div class="term-prompt">harshit@dev:<span class="term-path">~/portfolio</span>$ <span id="term-cmd"></span><span class="cursor-blink">█</span></div>
+          </div>
+        </div>
+
+      </div><!-- /editor-column -->
+
+    </div><!-- /vscode-body -->
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <div class="status-left">
+        <span class="status-item git">⎇ main</span>
+        <span class="status-item">✓ 0 errors</span>
+        <span class="status-item warn">⚠ 2 warnings</span>
+      </div>
+      <div class="status-right">
+        <span class="status-item" id="status-file">about.js</span>
+        <span class="status-item">Ln <span id="status-line">1</span>, Col 1</span>
+        <span class="status-item">UTF-8</span>
+        <span class="status-item">JavaScript</span>
+        <span class="status-item live">● Live Share</span>
+        <span class="status-item">Prettier</span>
+      </div>
+    </div>
+
+  </div><!-- /vscode -->
+
+  <script src="script.js"></script>
+</body>
+</html>
