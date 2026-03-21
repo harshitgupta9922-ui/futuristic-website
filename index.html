@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HARSHIT.DEV — Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
@@ -732,12 +733,11 @@
                     </div>
                   </div>
 
-                  <form class="contact-form" action="https://formsubmit.co/harshitgupta9922@gmail.com" method="POST" id="contact-form">
-                    <!-- FormSubmit config -->
-                    <input type="hidden" name="_subject" value="🚀 New message from your portfolio!" />
-                    <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_template" value="box" />
-                    <input type="hidden" name="_next" value="about:blank" />
+                  <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                    <!-- Web3Forms config -->
+                    <input type="hidden" name="access_key" value="2efece92-9d52-4729-b040-ad0a1be9c6d3" />
+                    <input type="hidden" name="subject" value="🚀 New message from your portfolio!" />
+                    <input type="hidden" name="redirect" value="false" />
 
                     <div class="html-tag">&lt;form action="formsubmit.co"&gt;</div>
                     <div class="form-group">

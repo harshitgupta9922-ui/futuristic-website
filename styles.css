@@ -1218,3 +1218,91 @@ input, textarea { font-family: inherit; }
 
 /* ═══════════════════ SELECTION ═══════════════════ */
 ::selection { background: rgba(0,245,255,0.2); color: var(--text); }
+
+/* ═══════════════════ MOBILE RESPONSIVE ═══════════════════ */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-w: 0px;
+    --activity-w: 0px;
+    --terminal-h: 140px;
+  }
+
+  html { font-size: 13px; }
+
+  /* Hide sidebar & activity bar on mobile */
+  .sidebar,
+  .activity-bar { display: none !important; }
+
+  /* Hide minimap & line numbers on mobile */
+  .minimap,
+  .line-numbers { display: none !important; }
+
+  /* Hide breadcrumb on mobile */
+  .breadcrumb { display: none !important; }
+
+  /* Editor takes full width */
+  .editor-column { width: 100vw; }
+
+  .editor-content {
+    padding: 14px 12px;
+    overflow-x: hidden;
+  }
+
+  /* Title bar */
+  .title-bar { padding: 0 10px; }
+  .title-bar-menu { display: none; }
+
+  /* Tab bar — scrollable, smaller */
+  .tab-bar { overflow-x: auto; }
+  .tab { padding: 0 10px; font-size: 0.72rem; }
+  .tab-close { display: none; }
+
+  /* Status bar */
+  .status-bar { font-size: 0.65rem; }
+  .status-right .status-item:not(:last-child) { display: none; }
+
+  /* Terminal */
+  .terminal-panel { height: var(--terminal-h); }
+
+  /* Hero section */
+  .hero-card { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+  .hero-avatar { width: 80px; height: 80px; }
+  .hero-name { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+  .hero-title { font-size: 0.75rem; }
+  .hero-title-line { font-size: 0.82rem; white-space: normal; word-break: break-word; }
+  .hero-meta { justify-content: center; flex-wrap: wrap; gap: 6px; }
+  .hero-actions { flex-direction: column; gap: 8px; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+
+  /* Stats */
+  .stats-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  /* Projects grid */
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card { padding: 16px; }
+
+  /* Skills */
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-bar-row { font-size: 0.75rem; }
+
+  /* Timeline */
+  .timeline-item { padding-left: 20px; }
+  .tl-dot { left: 0; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-form { padding: 0; }
+
+  /* Section headings */
+  .section-comment { font-size: 0.78rem; }
+  .section-title { font-size: clamp(1rem, 5vw, 1.4rem); }
+
+  /* Tags & badges — wrap properly */
+  .project-tags,
+  .tl-tags,
+  .hero-meta { flex-wrap: wrap; }
+
+  /* Boot screen */
+  .boot-log { font-size: 0.72rem; }
+}
