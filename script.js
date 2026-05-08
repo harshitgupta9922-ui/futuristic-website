@@ -490,6 +490,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardGlow();
   initCursorGlow();
 });
-document.querySelector('.project-card').addEventListener('click', () => {
-  window.location.href = 'https://niftypapertrade.in/';
-});
